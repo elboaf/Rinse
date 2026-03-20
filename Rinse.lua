@@ -707,13 +707,15 @@ function RinseFrameOptions_OnClick()
 end
 
 local function DisableCheckBox(checkBox)
-	OptionsFrame_DisableCheckBox(checkBox)
-	_G[checkBox:GetName().."TooltipPreserve"]:Show()
+	checkBox:Disable()
+	local preserve = _G[checkBox:GetName().."TooltipPreserve"]
+	if preserve then preserve:Show() end
 end
 
 local function EnableCheckBox(checkBox)
-	OptionsFrame_EnableCheckBox(checkBox)
-	_G[checkBox:GetName().."TooltipPreserve"]:Hide()
+	checkBox:Enable()
+	local preserve = _G[checkBox:GetName().."TooltipPreserve"]
+	if preserve then preserve:Hide() end
 end
 
 local function UpdateBlacklist()
